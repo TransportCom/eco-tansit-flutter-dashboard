@@ -101,9 +101,13 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
               ),
               Row(
                 children: [
-                  Text(isLoginScreen ? "Login" : "Create your account",
-                      style: GoogleFonts.roboto(
-                          fontSize: 30, fontWeight: FontWeight.bold)),
+                  Text(
+                    isLoginScreen ? "Login" : "Create your account",
+                    style: GoogleFonts.roboto(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green),
+                  ),
                 ],
               ),
               const SizedBox(
@@ -165,13 +169,15 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                           focusColor: active,
                           hoverColor: active,
                           labelText: "Username",
-                          hintText: "jdoe123",
+                          hintText: "ImenBa",
                           errorText: isEditingUsername
                               ? validateUsername(
                                   registerController.usernameController!.text)
                               : null,
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20))),
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide:
+                                  const BorderSide(color: Colors.green))),
                     )
                   : const SizedBox(
                       height: 1,
@@ -191,12 +197,13 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                     focusColor: active,
                     hoverColor: active,
                     labelText: "Email",
-                    hintText: "abc@domain.com",
+                    hintText: "imenbenatig@esprit.tn",
                     errorText: isEditingEmail
                         ? validateEmail(registerController.emailController.text)
                         : null,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(color: Colors.green))),
               ),
               const SizedBox(
                 height: 15,
@@ -223,7 +230,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                           passwordIsVisible
                               ? Icons.visibility_off
                               : Icons.visibility,
-                          color: lightGray,
+                          color: Colors.lightGreen,
                         ),
                       ),
                     ),
@@ -234,7 +241,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                             registerController.passwordController.text)
                         : null,
                     border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20))),
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: const BorderSide(color: Colors.green))),
               ),
               const SizedBox(
                 height: 15,
@@ -343,9 +351,9 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                     try {
                       //custom auth
                       var result = await userSignup(
-                        registerController.usernameController!.text,
-                        registerController.emailController.text,
-                        registerController.passwordController.text);
+                          registerController.usernameController!.text,
+                          registerController.emailController.text,
+                          registerController.passwordController.text);
 
                       var msg = result['msg'];
 
@@ -455,8 +463,8 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                     try {
                       //custom auth
                       var result = await userLogin(
-                        registerController.emailController.text,
-                        registerController.passwordController.text);
+                          registerController.emailController.text,
+                          registerController.passwordController.text);
 
                       var msg = result['msg'];
                       var token = result['token'];
@@ -502,7 +510,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
                         //firebase auth
                         //if (result == Constants.loginOk) {
                         menuController
-                        .changeActiveItemTo(overViewPageDisplayName);
+                            .changeActiveItemTo(overViewPageDisplayName);
                         Get.offAllNamed(rootRoute);
                       }
                     } catch (e) {

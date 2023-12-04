@@ -35,7 +35,7 @@ class MenuController extends GetxController {
   }
 
   Widget customIcon(IconData icon, String itemName) {
-    if (isActive(itemName)) return Icon(icon, size: 22, color: dark);
+    if (isActive(itemName)) return Icon(icon, size: 22, color: Colors.grey);
     return Icon(icon,
         size: 22, color: isHovering(itemName) ? dark : Colors.green);
   }

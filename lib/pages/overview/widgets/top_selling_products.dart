@@ -24,12 +24,9 @@ class _AvailableDriversTableState extends State<AvailableDriversTable> {
   @override
   Widget build(BuildContext context) {
     var columns = const [
-      DataColumn(label: Text('Brand')),
-      DataColumn(label: Text('Category')),
-      DataColumn(label: Text('Station')),
-      DataColumn(label: Text('Price')),
-      DataColumn(label: Text('Rating')),
-      DataColumn(label: Text('Stock')),
+      DataColumn(label: Text('Title')),
+      DataColumn(label: Text('Lan')),
+      DataColumn(label: Text('Lat')),
     ];
 
     final verticalScrollController = ScrollController();
@@ -58,7 +55,7 @@ class _AvailableDriversTableState extends State<AvailableDriversTable> {
                     width: 10,
                   ),
                   CustomText(
-                    text: "Top Selling Stations",
+                    text: "Top Stations",
                     color: lightGray,
                     weight: FontWeight.bold,
                   ),
@@ -96,19 +93,17 @@ class _AvailableDriversTableState extends State<AvailableDriversTable> {
                                   (index) => DataRow(cells: [
                                     DataCell(CustomText(
                                       text: stationsController
-                                          .stations[index].brand!,
-                                    )),
-                                    DataCell(CustomText(
-                                      text: stationsController
-                                          .stations[index].category!,
-                                    )),
-                                    DataCell(CustomText(
-                                      text: stationsController
                                           .stations[index].title!,
                                     )),
                                     DataCell(CustomText(
-                                      text:
-                                          "\$${stationsController.stations[index].price}",
+                                      text: stationsController
+                                          .stations[index].lan
+                                          .toString(),
+                                    )),
+                                    DataCell(CustomText(
+                                      text: stationsController
+                                          .stations[index].lat
+                                          .toString(),
                                     )),
                                     DataCell(Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -121,17 +116,7 @@ class _AvailableDriversTableState extends State<AvailableDriversTable> {
                                         const SizedBox(
                                           width: 5,
                                         ),
-                                        CustomText(
-                                          text: stationsController
-                                              .stations[index].rating!
-                                              .toString(),
-                                        ),
                                       ],
-                                    )),
-                                    DataCell(CustomText(
-                                      text: stationsController
-                                          .stations[index].stock!
-                                          .toString(),
                                     )),
                                   ]),
                                 ),

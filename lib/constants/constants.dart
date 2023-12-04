@@ -5,7 +5,7 @@ class Constants {
       "https://jwt-auth-api-production-2459.up.railway.app";
 
   static const String totalStock = " All Stations:";
-  static const String valueOfStock = "Value of stock:";
+  static const String valueOfStock = "Value :";
   static const String stationsCount = "Stations count:";
   static const String customerCount = "Customer count:";
 

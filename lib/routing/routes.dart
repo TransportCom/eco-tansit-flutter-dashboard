@@ -3,7 +3,7 @@ const rootRoute = "/home";
 const overViewPageDisplayName = "Overview";
 const overViewPageRoute = "/overview";
 
-const stationsPageDisplayName = "Products";
+const stationsPageDisplayName = "Stations";
 const stationsPageRoute = "/stations";
 
 const clientsPageDisplayName = "Clients";

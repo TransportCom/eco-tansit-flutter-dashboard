@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
             page: () => const AuthenticationPage()),
       ],
       debugShowCheckedModeBanner: false,
-      title: "Admin Panel",
+      title: "EcoTransit Admin Panel",
       theme: ThemeData(
         scaffoldBackgroundColor: light,
         textTheme: GoogleFonts.mulishTextTheme(

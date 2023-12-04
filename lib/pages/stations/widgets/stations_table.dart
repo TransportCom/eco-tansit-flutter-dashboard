@@ -23,13 +23,11 @@ class _StationsTableState extends State<StationsTable> {
   @override
   Widget build(BuildContext context) {
     var columns = const [
-      DataColumn(label: Text('Brand')),
-      DataColumn(label: Text('Category')),
-      DataColumn(label: Text('Station')),
-      DataColumn(label: Text('Price')),
-      DataColumn(label: Text('Rating')),
-      DataColumn(label: Text('Stock')),
-      DataColumn(label: Text('Actions')),
+      DataColumn(label: Text('Id')),
+      DataColumn(label: Text('Title')),
+      DataColumn(label: Text('Latitude')),
+      DataColumn(label: Text('Longitude')),
+      DataColumn(label: Text('Actions'))
     ];
 
     final DataTableSource data = MyData();
@@ -41,7 +39,6 @@ class _StationsTableState extends State<StationsTable> {
               : PaginatedDataTable(
                   columns: columns,
                   source: data,
-                  //header: const Text('All Stations'),
                   columnSpacing: 50,
                   horizontalMargin: 30,
                   rowsPerPage: 10,
@@ -58,12 +55,10 @@ class MyData extends DataTableSource {
   MyData() {
     for (var i = 0; i < stationsController.stations.length; i++) {
       data.add({
-        'brand': stationsController.stations[i].brand,
-        'category': stationsController.stations[i].category,
-        'station': stationsController.stations[i].title,
-        'price': stationsController.stations[i].price.toString(),
-        'rating': stationsController.stations[i].rating.toString(),
-        'stock': stationsController.stations[i].stock.toString(),
+        'id': stationsController.stations[i].id,
+        'title': stationsController.stations[i].title,
+        'lat': stationsController.stations[i].lat,
+        'lan': stationsController.stations[i].lan,
         'actions': {
           'edit': () {
             print('Edit');
@@ -79,29 +74,25 @@ class MyData extends DataTableSource {
   @override
   DataRow getRow(int index) {
     return DataRow(cells: [
-      DataCell(CustomText(text: data[index]['brand'])),
-      DataCell(CustomText(text: data[index]['category'])),
-      DataCell(CustomText(text: data[index]['station'])),
-      DataCell(CustomText(text: data[index]['price'])),
-      DataCell(Row(
-        children: [
-          const Icon(Icons.star, color: Colors.orangeAccent),
-          const SizedBox(width: 5),
-          CustomText(text: data[index]['rating']),
-        ],
-      )),
-      DataCell(CustomText(text: data[index]['stock'])),
+      DataCell(CustomText(text: data[index]['id'].toString())),
+      DataCell(CustomText(text: data[index]['title'])),
+      DataCell(CustomText(text: data[index]['lat'].toString())),
+      DataCell(CustomText(text: data[index]['lan'].toString())),
       DataCell(Row(
         children: [
           IconButton(
             icon: const Icon(Icons.edit),
             color: Colors.green,
-            onPressed: data[index]['actions']['edit'],
+            onPressed: () {
+              print('Edit');
+            },
           ),
           IconButton(
             icon: const Icon(Icons.delete),
             color: Colors.redAccent,
-            onPressed: data[index]['actions']['delete'],
+            onPressed: () {
+              print('Delete');
+            },
           ),
         ],
       )),

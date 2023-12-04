@@ -1,69 +1,53 @@
 class Customer {
   int? id;
-  String? name;
-  String? username;
+  String? lastActive;
   String? email;
-  Address? address;
-  String? phone;
+  String? password;
+  String? name;
+  String? lastname;
+  bool? verified;
+  String? loginStamp;
+  String? role;
+  String? tel;
 
   Customer({
     this.id,
-    this.name,
-    this.username,
+    this.lastActive,
     this.email,
-    this.address,
-    this.phone,
+    this.password,
+    this.name,
+    this.lastname,
+    this.verified,
+    this.loginStamp,
+    this.role,
+    this.tel,
   });
 
   Customer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    name = json['name'];
-    username = json['username'];
+    lastActive = json['lastActive'];
     email = json['email'];
-    address = Address.fromJson(json['address']);
-    phone = json['phone'];
+    password = json['password'];
+    name = json['name'];
+    lastname = json['lastname'];
+    verified = json['verified'];
+    loginStamp = json['loginStamp'];
+    role = json['role'];
+    tel = json['tel'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['name'] = name;
-    data['username'] = username;
+    data['lastActive'] = lastActive;
     data['email'] = email;
-    if (address != null) {
-      data['address'] = address!.toJson();
-    }
-    data['phone'] = phone;
-    return data;
-  }
-}
-
-class Address {
-  String? street;
-  String? suite;
-  String? city;
-  String? zipcode;
-
-  Address({
-    this.street,
-    this.suite,
-    this.city,
-    this.zipcode,
-  });
-
-  Address.fromJson(Map<String, dynamic> json) {
-    street = json['street'];
-    suite = json['suite'];
-    city = json['city'];
-    zipcode = json['zipcode'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['street'] = street;
-    data['suite'] = suite;
-    data['city'] = city;
-    data['zipcode'] = zipcode;
+    data['password'] = password;
+    data['name'] = name;
+    data['lastname'] = lastname;
+    data['verified'] = verified;
+    data['loginStamp'] = loginStamp;
+    data['role'] = role;
+    data['tel'] = tel;
     return data;
   }
 }

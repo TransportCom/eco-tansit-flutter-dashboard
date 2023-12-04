@@ -32,8 +32,8 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
           Visibility(
               visible: !ResponsiveWidget.isSmallScreen(context),
               child: CustomText(
-                text: "Admin Panel",
-                color: lightGray,
+                text: "EcoTransit Admin",
+                color: Colors.lightGreen,
                 size: 20,
                 weight: FontWeight.bold,
               )),
@@ -88,11 +88,12 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
                 color: active.withOpacity(.5),
                 borderRadius: BorderRadius.circular(30)),
             child: Container(
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(30)),
-              padding: const EdgeInsets.all(2),
-              margin: const EdgeInsets.all(2),
-              child: Obx(() => CircleAvatar(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30)),
+                padding: const EdgeInsets.all(2),
+                margin: const EdgeInsets.all(2),
+                child: Obx(() => CircleAvatar(
                     backgroundColor: light,
                     child: _loggedUserController.loggedUser.imageUrl == null
                         ? Icon(
@@ -100,17 +101,15 @@ AppBar topNavigationBar(BuildContext context, GlobalKey<ScaffoldState> key) =>
                             color: dark,
                           )
                         : ImageNetwork(
-                            image: _loggedUserController.loggedUser.imageUrl!, 
+                            image: _loggedUserController.loggedUser.imageUrl!,
                             width: 40,
                             height: 40,
                             borderRadius: BorderRadius.circular(70),
                             onLoading: const Center(
                               child: CircularProgressIndicator(),
                             ),
-                          )
-                        )
-                  )),
-            ),
+                          )))),
+          ),
         ],
       ),
       iconTheme: IconThemeData(color: dark),
